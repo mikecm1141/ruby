@@ -15,6 +15,6 @@ class Luhn
   end
 
   def self.double_digit(digit)
-    digit * 2 > 9 ? digit = digit * 2 - 9 : digit * 2
+    digit * 2 > 9 ? digit * 2 - 9 : digit * 2
   end
 end
