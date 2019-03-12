@@ -2,16 +2,22 @@ class Series
   attr_reader :series
 
   def initialize(series)
-    @series = series
+    @series = series.chars
   end
 
   def slices(amount)
-    n_slices = series.length - amount + 1
+    raise ArgumentError if amount > series.length
 
-    raise ArgumentError if n_slices <= 0
+    result = []
 
-    n_slices.times.map do |time|
-      series[time, amount]
+    series.length.times do |step|
+      result.push(series[step...step + amount].join)
     end
+
+    result.select { |ele| ele.length === amount }
   end
+
+  private
+
+  attr_reader :series
 end
